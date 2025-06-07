@@ -1,0 +1,18 @@
+{
+  "name": "catalogo-eventos",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.6",
+    "firebase": "^11.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
