@@ -2,7 +2,7 @@ import React from "react";
 
 function Inicio() {
   const fondoEstilo = {
-    backgroundImage: "url('https://png.pngtree.com/background/20230611/original/pngtree-an-image-of-a-calendar-on-a-wooden-table-picture-image_3170719.jpg')",
+    backgroundImage: "url('https://www.business-plan-excel.fr/wp-content/uploads/2020/06/Calendrier-2023-Excel-vierge.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "100vh",
