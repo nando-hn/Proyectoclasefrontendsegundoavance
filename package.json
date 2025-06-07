@@ -8,11 +8,23 @@
   "dependencies": {
     "bootstrap": "^5.3.6",
     "firebase": "^11.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^6.14.2"
   },
   "devDependencies": {
-    "parcel": "^2.9.3"
-  }
+    "parcel": "^2.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edinJuarez56/GestorEventos_Proyecto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edinJuarez56/GestorEventos_Proyecto/issues"
+  },
+  "homepage": "https://github.com/edinJuarez56/GestorEventos_Proyecto#readme",
+  "description": ""
 }
