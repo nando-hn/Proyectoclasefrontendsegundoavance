@@ -8,36 +8,43 @@ function GestorEventos({ agregarEvento }) {
     fecha: "",
     urlImagen: "",
   });
+
   const location = useLocation();
   const navigate = useNavigate();
 
+  const eventoEdicion = location.state?.evento;
+
   useEffect(() => {
-    if (location.state?.evento) {
-      setNuevoEvento(location.state.evento);
+    if (eventoEdicion) {
+      setNuevoEvento({
+        nombre: eventoEdicion.nombre || "",
+        lugar: eventoEdicion.lugar || "",
+        fecha: eventoEdicion.fecha || "",
+        urlImagen: eventoEdicion.urlImagen || "",
+      });
     }
-  }, [location.state]);
+  }, [eventoEdicion]);
 
   const manejarCambio = (e) => {
     setNuevoEvento({ ...nuevoEvento, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (nuevoEvento.nombre && nuevoEvento.lugar && nuevoEvento.fecha && nuevoEvento.urlImagen) {
-      if (location.state?.index !== undefined) {
-        agregarEvento(nuevoEvento, location.state.index); // Para edición
-      } else {
-        agregarEvento(nuevoEvento); // Para nuevo evento
-      }
-      navigate("/eventos");
-    } else {
-      alert("Por favor, completa todos los campos.");
+    const { nombre, lugar, fecha, urlImagen } = nuevoEvento;
+
+    if (!nombre || !lugar || !fecha || !urlImagen) {
+      alert("Completa todos los campos");
+      return;
     }
+
+    await agregarEvento(nuevoEvento, eventoEdicion?.id);
+    navigate("/eventos");
   };
 
   return (
     <div className="container mt-5">
-      <h2>Gestor de Eventos</h2>
+      <h2>{eventoEdicion ? "Editar Evento" : "Agregar Evento"}</h2>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="mb-3">
           <input
@@ -60,7 +67,7 @@ function GestorEventos({ agregarEvento }) {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="fecha" className="form-label">Fecha del evento</label>
+          <label className="form-label">Fecha del evento</label>
           <input
             type="date"
             name="fecha"
@@ -79,8 +86,21 @@ function GestorEventos({ agregarEvento }) {
             onChange={manejarCambio}
           />
         </div>
+
+        {/* Vista previa de imagen (opcional) */}
+        {nuevoEvento.urlImagen && (
+          <div className="mb-3 text-center">
+            <img
+              src={nuevoEvento.urlImagen}
+              alt="Vista previa"
+              style={{ maxWidth: "100%", maxHeight: "300px" }}
+              className="img-thumbnail"
+            />
+          </div>
+        )}
+
         <button type="submit" className="btn btn-primary">
-          {location.state?.index !== undefined ? "Guardar Cambios" : "Agregar Evento"}
+          {eventoEdicion ? "Guardar Cambios" : "Agregar Evento"}
         </button>
       </form>
     </div>

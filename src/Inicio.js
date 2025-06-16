@@ -2,7 +2,7 @@ import React from "react";
 
 function Inicio() {
   const fondoEstilo = {
-    backgroundImage: "url('https://png.pngtree.com/background/20230611/original/pngtree-an-image-of-a-calendar-on-a-wooden-table-picture-image_3170719.jpg')",
+    backgroundImage: "url('https://cdn.pixabay.com/photo/2020/05/17/20/27/street-5183453_960_720.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "100vh",

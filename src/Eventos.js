@@ -1,3 +1,4 @@
+// src/Eventos.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -37,18 +38,22 @@ function Eventos({ eventos, eliminarEvento, editarEvento }) {
                     <strong>Fecha:</strong> {evento.fecha}
                   </p>
                   <div className="d-flex justify-content-between">
-                    <button
-                      className="btn btn-warning btn-sm"
-                      onClick={() => handleEditar(index, evento)}
-                    >
-                      Editar Evento
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => handleEliminar(index)}
-                    >
-                      Eliminar Evento
-                    </button>
+                    {editarEvento && (
+                      <button
+                        className="btn btn-warning btn-sm"
+                        onClick={() => handleEditar(index, evento)}
+                      >
+                        Editar Evento
+                      </button>
+                    )}
+                    {eliminarEvento && (
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => handleEliminar(index)}
+                      >
+                        Eliminar Evento
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
