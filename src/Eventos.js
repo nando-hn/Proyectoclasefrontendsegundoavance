@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 function Eventos({ eventos, eliminarEvento, editarEvento }) {
   const navigate = useNavigate();
 
-  const handleEliminar = (index) => {
+  const handleEliminar = (evento) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este evento?")) {
-      eliminarEvento(index);
+      eliminarEvento(evento.id);
     }
   };
 
-  const handleEditar = (index, evento) => {
-    navigate("/gestor-eventos", { state: { evento, index } });
+  const handleEditar = (evento) => {
+    navigate("/gestor-eventos", { state: { evento } });
   };
 
   return (
@@ -22,8 +22,8 @@ function Eventos({ eventos, eliminarEvento, editarEvento }) {
         <p>No hay eventos registrados.</p>
       ) : (
         <div className="row">
-          {eventos.map((evento, index) => (
-            <div key={index} className="col-md-4 mb-4">
+          {eventos.map((evento) => (
+            <div key={evento.id} className="col-md-4 mb-4">
               <div className="card">
                 <img
                   src={evento.urlImagen}
@@ -41,7 +41,7 @@ function Eventos({ eventos, eliminarEvento, editarEvento }) {
                     {editarEvento && (
                       <button
                         className="btn btn-warning btn-sm"
-                        onClick={() => handleEditar(index, evento)}
+                        onClick={() => handleEditar(evento)}
                       >
                         Editar Evento
                       </button>
@@ -49,7 +49,7 @@ function Eventos({ eventos, eliminarEvento, editarEvento }) {
                     {eliminarEvento && (
                       <button
                         className="btn btn-danger btn-sm"
-                        onClick={() => handleEliminar(index)}
+                        onClick={() => handleEliminar(evento)}
                       >
                         Eliminar Evento
                       </button>

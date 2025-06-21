@@ -25,8 +25,7 @@ function Login({ setUsuario }) {
 
 
       navigate('/eventos');
-    } catch (err) {
-      console.error('Error durante el login:', err.response?.data || err.message);
+    } catch (err) {('Error durante el login:', err.response?.data || err.message);
       setError('Credenciales incorrectas o error al iniciar sesión.');
     }
   };
